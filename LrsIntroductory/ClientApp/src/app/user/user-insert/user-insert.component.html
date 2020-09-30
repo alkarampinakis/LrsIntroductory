@@ -1,0 +1,43 @@
+<div class="container">
+    <h3>Insert User</h3>
+    <form #form="ngForm" (ngSubmit)="onSubmitForm(form)">
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input 
+                type="text"
+                name="name"
+                id="name"
+                class="form-control"
+                placeholder="Name"
+                [(ngModel)]="user.name"
+                #nameField="ngModel"            
+            ></div>
+            <div class="form-group">
+                <label for="surname">Surname</label>
+                <input 
+                    type="text"
+                    name="surname"
+                    id="surname"
+                    class="form-control"
+                    placeholder="Surname"
+                    [(ngModel)]="user.surname"
+                    #surnameField="ngModel"            
+                ></div>
+
+                <div class="row">
+                    <div class="col-xs-12 col-12 col-md-4 form-group">
+                      <input type="text"
+                             placeholder="Datepicker"
+                             class="form-control"
+                             bsDatepicker>
+                    </div>
+                    <div class="col-xs-12 col-12 col-md-4 form-group">
+                      <input type="text"
+                             placeholder="Daterangepicker"
+                             class="form-control"
+                             bsDaterangepicker>
+                    </div>
+                  </div>
+    </form>
+
+</div>

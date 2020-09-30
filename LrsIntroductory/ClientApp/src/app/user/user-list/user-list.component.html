@@ -1,0 +1,55 @@
+<h2>{{title | uppercase}}</h2>
+<div class="card-body">
+  <div class="row">
+    <div class="col-md-2">
+      Filter By FullName:
+    </div>
+    <div class="col-md-4">
+      <input type="text"
+             [(ngModel)]="listFilter"
+             placeholder="{{listFilter}}" />
+    </div>
+    <div class="col-md-6">
+        <div class="checkbox">
+            <label><input 
+                type="checkbox" 
+                [checked]="includeInactive"
+                (click)="toggleInactive()"> Include Inactive</label>
+        </div>
+    </div>
+  </div>
+  <div class="table-responsive">
+    <table class="table" *ngIf='users && users.length'>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Birth Date</th>
+          <th>Type</th>
+          <th>Title</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of fitleredUsers">
+            <td>{{ user.surname | titlecase }} {{ user.name | titlecase }}</td>
+            <!-- <td> <a [routerLink]="['/product',product.id]"> {{product.name | uppercase}}</a></td> -->
+            <td>{{ user.birthDate | date: 'dd/MM/yyyy'}}</td>
+            <td>{{ user.userType | titlecase }}</td>
+            <td>{{ user.userTitle | titlecase }}</td>
+            <td>{{ user.emailAddress }}</td>
+            <td>
+                <a [routerLink]="['/user',user.id]">  
+                    <i class="fas fa-eye"></i>
+                </a>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div style="float:right">
+    <a class="btn btn-primary" [routerLink]="'user-insert'">
+        Insert
+    </a>
+  </div>
+</div>

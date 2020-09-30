@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30517.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LrsIntroductory", "LrsIntroductory\LrsIntroductory.csproj", "{985B0B04-11AD-424B-AAC0-89095217B90F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LrsIntroducotryApi", "LrsIntroducotryApi\LrsIntroducotryApi.csproj", "{7C45F035-D359-4760-93FA-E2E9145FC903}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{985B0B04-11AD-424B-AAC0-89095217B90F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{985B0B04-11AD-424B-AAC0-89095217B90F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{985B0B04-11AD-424B-AAC0-89095217B90F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{985B0B04-11AD-424B-AAC0-89095217B90F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C45F035-D359-4760-93FA-E2E9145FC903}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C45F035-D359-4760-93FA-E2E9145FC903}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C45F035-D359-4760-93FA-E2E9145FC903}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C45F035-D359-4760-93FA-E2E9145FC903}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {37EB9B3D-5764-45AA-9CE9-96375797F552}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,10 @@
+<h2 style="text-decoration: underline;">User Details</h2>
+<div *ngIf="user">
+  <h4>Name: {{user.surname | titlecase}} {{user.name | titlecase}}</h4>
+  <h5>Birth Date: {{user.birthDate | date}}</h5>
+  <h5>Type: {{user.userType | titlecase}}</h5>
+  <h5>Title: {{user.userTitle | titlecase}}</h5>
+  <h5>Email: {{user.emailAddress}}</h5>
+  <h5>Is Active: <input type="checkbox" disabled [checked]="user.isActive"></h5>
+</div>
+<button class="btn btn-light" (click)="goBack()">Go Back Madam merkel</button>
