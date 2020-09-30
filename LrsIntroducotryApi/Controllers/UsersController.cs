@@ -69,5 +69,25 @@ namespace LrsIntroducotryApi.Controllers
         {
             return await _userService.GetUserTitlesAsync().ConfigureAwait(false);
         }
+
+        /// <summary>
+        /// Inserts a new user.
+        /// </summary>
+        /// <param name="user">The new user.</param>
+        /// <returns>A <see cref="UserWithTypeTitleDTO"/></returns>
+        [Route("/User")]
+        [HttpPost]
+        public async Task<System.Web.Http.IHttpActionResult> InsertUserAsync(UserWithTypeTitleDTO user)
+        {
+            try
+            {
+                //var result = await _userService.InsertUserAsync(user).ConfigureAwait(false);
+                return (System.Web.Http.IHttpActionResult)Ok();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            };
+        }
     }
 }

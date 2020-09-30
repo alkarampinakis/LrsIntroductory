@@ -12,7 +12,6 @@ import { Injectable } from '@angular/core';
 export class UserService{
     private baseUrl ='https://localhost:44366';
     private usersEndpoint ='/users';
-    private insertEndpoint ='/insert';
     private userEndpoint ='/user';
     private typesEndpoint ='/types';
     private titlesEndpoint ='/titles';
@@ -36,6 +35,6 @@ export class UserService{
     }
 
     insertUser(user : IUser): Observable<any> {
-        return this.http.post(this.baseUrl+this.insertEndpoint, user);
+        return this.http.post(this.baseUrl + this.userEndpoint, user);
     }
 }

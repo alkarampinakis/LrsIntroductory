@@ -1,8 +1,8 @@
 <div class="container">
     <h3>Insert User</h3>
-    <form #form="ngForm" (ngSubmit)="onSubmitForm(form)">
+    <form #form="ngForm" >
         <div class="form-group">
-            <label for="name">Name</label>
+            <label for="name">Name:</label>
             <input 
                 type="text"
                 name="name"
@@ -13,7 +13,7 @@
                 #nameField="ngModel"            
             ></div>
             <div class="form-group">
-                <label for="surname">Surname</label>
+                <label for="surname">Surname:</label>
                 <input 
                     type="text"
                     name="surname"
@@ -22,22 +22,66 @@
                     placeholder="Surname"
                     [(ngModel)]="user.surname"
                     #surnameField="ngModel"            
-                ></div>
+                >
+            </div>
 
-                <div class="row">
-                    <div class="col-xs-12 col-12 col-md-4 form-group">
-                      <input type="text"
-                             placeholder="Datepicker"
-                             class="form-control"
-                             bsDatepicker>
-                    </div>
-                    <div class="col-xs-12 col-12 col-md-4 form-group">
-                      <input type="text"
-                             placeholder="Daterangepicker"
-                             class="form-control"
-                             bsDaterangepicker>
-                    </div>
-                  </div>
+            <div class="form-group">
+                <label for="birthDate">Date Of Birth:</label>
+                <input 
+                    type="date"
+                    class="form-control"
+                    id="birthDate"
+                    name="birthDate"
+                    [(ngModel)]="user.birthDate">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input 
+                    type="email"
+                    name="email"
+                    id="email"
+                    class="form-control"
+                    placeholder="Email"
+                    [(ngModel)]="user.email"
+                    #surnameField="ngModel">
+            </div>
+            <div class="row">
+                <div class="form-group col-md-6">
+                    <label for="userType">User Type</label>
+                    <select
+                        id="userType"
+                        class="form-control"
+                        name="userType"
+                        [(ngModel)]="user.userTypeId">
+                        <option *ngFor="let userType of userTypes" value="{{userType.id}}">{{userType.description}}</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="userTitle">User Title</label>
+                    <select
+                        id="userTitle"
+                        class="form-control"
+                        name="userTitle"
+                        [(ngModel)]="user.userTitleId">
+                        <option *ngFor="let userTitle of userTitles" value="{{userTitle.id}}">{{userTitle.description}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-check form-group">
+                <input 
+                    type="checkbox"
+                    class="form-check-input"
+                    id="isActive"
+                    name="isActive" 
+                    [(ngModel)]="user.isActive">
+                <label for="isActive" class="form-check-label">
+                    is Active
+                </label>
+            </div>
+
+            <button class="btn btn-primary" (click)="insertUser()" >Submit</button>
+            <button class="btn btn-light" (click)="goBack()">Back</button>
     </form>
 
 </div>

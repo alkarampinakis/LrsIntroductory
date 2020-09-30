@@ -3,6 +3,7 @@ import { IUserTitle } from './../../models/IUserTitle';
 import { IUser } from './../../models/IUser';
 import { Component, OnInit } from "@angular/core";
 import { UserService } from '../user-list/user.service';
+import { Location } from '@angular/common';
 
 @Component({
     templateUrl: './user-insert.component.html'
@@ -27,7 +28,8 @@ export class UserInsertComponent implements OnInit{
       };
       user: IUser = {... this.originalUser };
       
-    constructor(private userService: UserService){}
+    constructor(private userService: UserService,
+                private location: Location){}
 
     ngOnInit(): void {
         this.populateDropdowns();
@@ -53,5 +55,10 @@ export class UserInsertComponent implements OnInit{
 
     insertUser(): void{
         this.userService.insertUser(this.user);
+    }
+
+    goBack(): void
+    {
+        this.location.back();
     }
 }
