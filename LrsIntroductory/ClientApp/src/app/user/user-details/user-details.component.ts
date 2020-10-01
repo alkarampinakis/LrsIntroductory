@@ -1,3 +1,5 @@
+import { UserDeleteModalComponent } from './../user-delete/user-delete-modal.component';
+import { MatDialog } from '@angular/material/dialog';
 import { User } from '../../models/User';
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from '@angular/router';
@@ -15,7 +17,8 @@ export class UserDetailsComponent{
     constructor(private route: ActivatedRoute,
                 private userService: UserService,
                 private location: Location,
-                private router: Router){}
+                private router: Router,
+                public dialog: MatDialog){}
 
     ngOnInit(): void
     {
@@ -40,4 +43,12 @@ export class UserDetailsComponent{
     {
         this.location.back();
     }
+
+    openDialog() {
+        const dialogRef = this.dialog.open(UserDeleteModalComponent);
+    
+        dialogRef.afterClosed().subscribe(result => {
+          console.log(`Dialog result: ${result}`);
+        });
+      }
 }

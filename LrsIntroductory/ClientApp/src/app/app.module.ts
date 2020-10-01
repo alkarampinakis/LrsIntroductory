@@ -12,6 +12,8 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UserDeleteModalComponent } from './user/user-delete/user-delete-modal.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import { DatePipe } from '@angular/common';
     UserListComponent,
     UserDetailsComponent,
     UserInsertComponent,
-    UserUpdateComponent
+    UserUpdateComponent,
+    UserDeleteModalComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -34,7 +37,8 @@ import { DatePipe } from '@angular/common';
       { path: 'user-update/:id', component: UserUpdateComponent },
      // { path: '**', component: PageNotFoundComponent }
     ]),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatDialogModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
