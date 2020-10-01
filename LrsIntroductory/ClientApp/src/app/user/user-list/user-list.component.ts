@@ -1,4 +1,4 @@
-import { IUser } from '../../models/IUser';
+import { User } from '../../models/User';
 import { Component, OnInit } from "@angular/core";
 import { UserService } from './user.service';
 
@@ -11,8 +11,8 @@ export class UserListComponent implements OnInit{
 
     title:string = 'To Fovero User List';
     _listFilter: string;
-    fitleredUsers: IUser[];
-    users: IUser[] = [];
+    fitleredUsers: User[];
+    users: User[] = [];
     errorMessage: string;
     includeInactive:boolean = false;
         
@@ -45,10 +45,10 @@ export class UserListComponent implements OnInit{
         });
     }
   
-    perfomFilter(filterBy: string): IUser[]
+    perfomFilter(filterBy: string): User[]
     {
       filterBy = filterBy.toLocaleLowerCase();
-      return this.users.filter((user: IUser) =>
+      return this.users.filter((user: User) =>
       (user.surname +" "+ user.name).toLocaleLowerCase().indexOf(filterBy) !== -1) 
     }
 

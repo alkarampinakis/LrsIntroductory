@@ -1,3 +1,4 @@
+import { UserUpdateComponent } from './user/user-update/user-update.component';
 import { UserInsertComponent } from './user/user-insert/user-insert.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
 import { UserListComponent } from './user/user-list/user-list.component';
@@ -10,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     NavMenuComponent,
     UserListComponent,
     UserDetailsComponent,
-    UserInsertComponent
+    UserInsertComponent,
+    UserUpdateComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -28,10 +31,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: 'user-list', component: UserListComponent },
       { path: 'user/:id', component: UserDetailsComponent },
       { path: 'user-insert', component: UserInsertComponent },
+      { path: 'user-update/:id', component: UserUpdateComponent },
+     // { path: '**', component: PageNotFoundComponent }
     ]),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

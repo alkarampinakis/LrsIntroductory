@@ -1,4 +1,4 @@
-export interface IUserTitle {
+export interface UserTitle {
   id: number;
   description: string;
 }

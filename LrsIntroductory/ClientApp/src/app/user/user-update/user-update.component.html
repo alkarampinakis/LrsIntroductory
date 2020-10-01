@@ -1,6 +1,12 @@
 <div class="container">
-    <h3>Insert User</h3>
-    <form #form="ngForm" >
+    <h3>Update User</h3>
+    <form #form="ngForm" *ngIf="user">
+        <div 
+            class="alert alert-danger"
+            [hidden]="!noChangesDetected"
+        >
+            No Changes Detected
+        </div>
         <div class="form-group">
             <label class="required" for="name">Name:</label>
             <input 
@@ -41,7 +47,9 @@
                     class="form-control"
                     id="birthDate"
                     name="birthDate"
-                    [(ngModel)]="user.birthDate">
+                    [(ngModel)]="date"
+                    [value]="date"
+                    >
             </div>
 
             <div class="form-group">
@@ -55,7 +63,6 @@
                     [(ngModel)]="user.emailAddress"
                     #emailField="ngModel"
                     required
-                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
                     />
                     <div 
                     class="alert alert-danger" 
@@ -110,8 +117,7 @@
                 </label>
             </div>
 
-            <button class="btn btn-primary" (click)="insertUser(form)" >Submit</button>
+            <button class="btn btn-primary" (click)="updateUser(form)" >Submit</button>
             <button class="btn btn-light" (click)="goBack()">Back</button>
     </form>
-
 </div>

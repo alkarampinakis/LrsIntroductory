@@ -1,6 +1,7 @@
 ﻿using LrsIntroducotryApi.Models;
 using LrsIntroducotryApi.Models.Entities.Custom;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -47,6 +48,11 @@ namespace LrsIntroducotryApi.Repositories.Implementation
 
         public async Task<UserWithTypeTitle> GetUserByIdAsync(int userId)
         {
+            if (userId <= default(int))
+            {
+                throw new ArgumentNullException(nameof(userId));
+            }
+
             return await _context.User
                 .Where(x => x.Id == userId)
                 .Select(x => new UserWithTypeTitle
@@ -78,6 +84,55 @@ namespace LrsIntroducotryApi.Repositories.Implementation
             return await _context.UserTitle
                            .ToListAsync()
                            .ConfigureAwait(false);
+        }
+
+        public async Task InsertUserAsync(UserWithTypeTitle user)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            var newUser = new User
+            {
+                Name = user.Name,
+                Surname = user.Surname,
+                BirthDate = user.BirthDate,
+                EmailAddress = user.EmailAddress,
+                UserTitleId = user.UserTitleId,
+                UserTypeId = user.UserTypeId,
+                IsActive = user.IsActive
+            };
+
+            _ = _context.User.Add(newUser);
+            _ = await _context.SaveChangesAsync().ConfigureAwait(false);
+        }
+
+        public async Task UpdateUserAsync(UserWithTypeTitle user)
+        {
+            if (user == null)
+            {
+                throw new ArgumentNullException(nameof(user));
+            }
+
+            var oldUser = await _context.User
+                                    .SingleOrDefaultAsync(x => x.Id == user.Id)
+                                    .ConfigureAwait(false);
+            if (oldUser == null)
+            {
+                throw new KeyNotFoundException();
+            }
+
+            oldUser.Name = user.Name;
+            oldUser.Surname = user.Surname;
+            oldUser.BirthDate = user.BirthDate;
+            oldUser.EmailAddress = user.EmailAddress;
+            oldUser.IsActive = user.IsActive;
+            oldUser.UserTitleId = user.UserTitleId;
+            oldUser.UserTypeId = user.UserTypeId;
+
+            _ = _context.Update(oldUser);
+            _ = await _context.SaveChangesAsync().ConfigureAwait(false);
         }
     }
 }

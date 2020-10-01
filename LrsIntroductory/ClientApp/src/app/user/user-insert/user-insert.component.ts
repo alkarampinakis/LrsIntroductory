@@ -1,35 +1,37 @@
-import { IUserType } from './../../models/IUserType';
-import { IUserTitle } from './../../models/IUserTitle';
-import { IUser } from './../../models/IUser';
+import { Router } from '@angular/router';
+import { UserType } from '../../models/UserType';
+import { UserTitle } from '../../models/UserTitle';
+import { User } from '../../models/User';
 import { Component, OnInit } from "@angular/core";
 import { UserService } from '../user-list/user.service';
 import { Location } from '@angular/common';
+import { NgForm } from '@angular/forms';
 
 @Component({
     templateUrl: './user-insert.component.html'
 })
 
 export class UserInsertComponent implements OnInit{
-    submitted = false;
-    userTitles: IUserTitle[];
-    userTypes: IUserType[];
+    userTitles: UserTitle[];
+    userTypes: UserType[];
     errorMessage: string;
-    originalUser: IUser={
-        id: null,
+    originalUser: User={
+        id: 0,
         name: null,
         surname:null,
-        birthDate: null,
         emailAddress: null,
-        userType : null, 
+        birthDate: null,
+        userType : "", 
         userTypeId : null,  
-        userTitle : null,
+        userTitle : "",
         userTitleId : null,
         isActive : null, 
       };
-      user: IUser = {... this.originalUser };
+      user: User = {... this.originalUser };
       
     constructor(private userService: UserService,
-                private location: Location){}
+                private location: Location,
+                private router : Router  ){}
 
     ngOnInit(): void {
         this.populateDropdowns();
@@ -53,8 +55,14 @@ export class UserInsertComponent implements OnInit{
         });
     }
 
-    insertUser(): void{
-        this.userService.insertUser(this.user);
+    insertUser(form : NgForm): void{
+        if(form.valid){
+            this.userService.insertUser(this.user).subscribe(res=>{
+                this.router.navigate(['user-list']);
+            }),(err: any)=>{
+                console.log("Error Inserting user: ", err);
+            }
+        }
     }
 
     goBack(): void

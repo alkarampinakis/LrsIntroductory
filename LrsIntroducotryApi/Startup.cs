@@ -39,7 +39,10 @@ namespace LrsIntroducotryApi
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("http://localhost:4200").SetIsOriginAllowedToAllowWildcardSubdomains();
+                                      builder.WithOrigins("http://localhost:4200").SetIsOriginAllowedToAllowWildcardSubdomains()
+                                      .AllowAnyMethod()
+                                      .AllowAnyHeader()
+                                      .AllowCredentials();
                                   });
             });
 

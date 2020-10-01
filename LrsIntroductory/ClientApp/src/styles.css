@@ -18,3 +18,8 @@ code {
 tr:hover{
   background-color: lightgrey;
 }
+
+.required:after {
+  content:" *";
+  color: red;
+}

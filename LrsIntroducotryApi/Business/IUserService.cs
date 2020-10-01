@@ -31,5 +31,18 @@ namespace LrsIntroducotryApi.Business
         /// </summary>
         /// <returns>An <see cref="IEnumerable{UserTitleDTO]"/></returns>
         public Task<IEnumerable<UserTitleDTO>> GetUserTitlesAsync();
+
+        /// <summary>
+        /// Inserts a new user.
+        /// </summary>
+        /// <param name="user">The new user data.</param>
+        public Task InsertUserAsync(UserWithTypeTitleDTO user);
+
+        /// <summary>
+        /// Updates a user.
+        /// </summary>
+        /// <param name="user">The user data.</param>
+        public Task UpdateUserAsync(UserWithTypeTitleDTO user);
+
     }
 }

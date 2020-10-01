@@ -19,6 +19,7 @@ namespace LrsIntroducotryApi.Mapping
                     .ForMember(x => x.Description, y => y.MapFrom(z => z.Description));
 
             _ = CreateMap<UserWithTypeTitle, UserWithTypeTitleDTO>();
+            _ = CreateMap<UserWithTypeTitleDTO, UserWithTypeTitle>();
         }
     }
 }

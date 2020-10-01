@@ -1,5 +1,5 @@
 <h2>{{title | uppercase}}</h2>
-<div class="card-body">
+<div class="card-body" *ngIf="fitleredUsers">
   <div class="row">
     <div class="col-md-2">
       Filter By FullName:
@@ -18,7 +18,7 @@
         </div>
     </div>
   </div>
-  <div class="table-responsive">
+  <div class="table-responsive" style="height:500px;overflow:auto;">
     <table class="table" *ngIf='users && users.length'>
       <thead>
         <tr>
@@ -41,15 +41,24 @@
             <td>
                 <a [routerLink]="['/user',user.id]">  
                     <i class="fas fa-eye"></i>
+                </a> &nbsp;
+                <a [routerLink]="['/user-update',user.id]">  
+                    <i class="fas fa-edit"></i>
                 </a>
             </td>
         </tr>
       </tbody>
     </table>
   </div>
-  <div style="float:right">
-    <a class="btn btn-primary" [routerLink]="'/user-insert'">
+  <div class="row">
+    <div class="col-md-6" >Total Users: {{fitleredUsers.length}}</div>
+    <div class="col-md-6" >   
+      <a class="btn btn-primary" style="float:right; margin-right: 5%;" [routerLink]="'/user-insert'">
         Insert
-    </a>
+      </a>
+    </div>
   </div>
+</div>
+<div *ngIf="!fitleredUsers">
+  No Users Found.
 </div>

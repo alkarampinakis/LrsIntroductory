@@ -1,6 +1,6 @@
-import { IUser } from '../../models/IUser';
+import { User } from '../../models/User';
 import { Component } from "@angular/core";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user-list/user.service';
 import { Location } from '@angular/common';
 
@@ -10,11 +10,12 @@ import { Location } from '@angular/common';
 
 export class UserDetailsComponent{
     pageTitle: string = 'Product ';
-    user: IUser;
+    user: User;
 
     constructor(private route: ActivatedRoute,
                 private userService: UserService,
-                private location: Location){}
+                private location: Location,
+                private router: Router){}
 
     ngOnInit(): void
     {
@@ -29,6 +30,10 @@ export class UserDetailsComponent{
             user => this.user = user,
             error => console.log(error)
             );
+    }
+
+    goToEditPage():void{
+        this.router.navigate(['user-update', this.user.id]);
     }
 
     goBack(): void

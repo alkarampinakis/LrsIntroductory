@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LrsIntroducotryApi.Controllers
 {
+    [Produces("application/json")]
     [ApiController]
     [Route("[controller]")]
     public class UsersController : ControllerBase
@@ -75,18 +76,54 @@ namespace LrsIntroducotryApi.Controllers
         /// </summary>
         /// <param name="user">The new user.</param>
         /// <returns>A <see cref="UserWithTypeTitleDTO"/></returns>
-        [Route("/User")]
         [HttpPost]
-        public async Task<System.Web.Http.IHttpActionResult> InsertUserAsync(UserWithTypeTitleDTO user)
+        public async Task<IActionResult> InsertUserAsync(UserWithTypeTitleDTO user)
         {
             try
             {
-                //var result = await _userService.InsertUserAsync(user).ConfigureAwait(false);
-                return (System.Web.Http.IHttpActionResult)Ok();
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                await _userService.InsertUserAsync(user).ConfigureAwait(false);
+                return Ok();
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
             }
             catch (Exception ex)
             {
-                throw ex;
+                return BadRequest(ex.Message);
+            };
+        }
+
+        /// <summary>
+        /// Updates a user.
+        /// </summary>
+        /// <param name="user">The update user data.</param>
+        /// <returns>A <see cref="UserWithTypeTitleDTO"/></returns>
+        [HttpPut]
+        public async Task<IActionResult> UpdateUserAsync(UserWithTypeTitleDTO user)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return BadRequest(ModelState);
+                }
+
+                await _userService.UpdateUserAsync(user).ConfigureAwait(false);
+                return Ok();
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
             };
         }
     }

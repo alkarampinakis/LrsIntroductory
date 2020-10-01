@@ -33,5 +33,17 @@ namespace LrsIntroducotryApi.Repositories
         /// </summary>
         /// <returns>An <see cref="IEnumerable{UserTitle]"/></returns>
         public Task<IEnumerable<UserTitle>> GetUserTitlesAsync();
+
+        /// <summary>
+        /// Inserts a new user.
+        /// </summary>
+        /// <param name="user">The new user data.</param>
+        public Task InsertUserAsync(UserWithTypeTitle user);
+
+        /// <summary>
+        /// Updates a user.
+        /// </summary>
+        /// <param name="user">The new user data.</param>
+        public Task UpdateUserAsync(UserWithTypeTitle user);
     }
 }
