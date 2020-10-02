@@ -41,7 +41,9 @@ namespace LrsIntroducotryApi.Business.Implementation
         {
             if (userId <= default(int))
             {
-                throw new ArgumentNullException();
+                throw new ArgumentException(
+                   "userId",
+                   "user identifier is required.");
             }
             return _mapper.Map<UserWithTypeTitleDTO>(await _userRepository.GetUserByIdAsync(userId).ConfigureAwait(false));
         }

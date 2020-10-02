@@ -3,9 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30517.126
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LrsIntroductory", "LrsIntroductory\LrsIntroductory.csproj", "{985B0B04-11AD-424B-AAC0-89095217B90F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LrsIntroductory", "LrsIntroductory\LrsIntroductory.csproj", "{985B0B04-11AD-424B-AAC0-89095217B90F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LrsIntroducotryApi", "LrsIntroducotryApi\LrsIntroducotryApi.csproj", "{7C45F035-D359-4760-93FA-E2E9145FC903}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LrsIntroducotryApi", "LrsIntroducotryApi\LrsIntroducotryApi.csproj", "{7C45F035-D359-4760-93FA-E2E9145FC903}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebAPI", "WebAPI", "{B5BE7B9B-8C6A-469B-B812-7EE86F80614B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebPresentation", "WebPresentation", "{35D12641-CEB6-4F0C-BF37-A044B9510770}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Unit Test", "Unit Test", "{96FA3795-8E02-41E0-947A-6C61C05245D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LrsIntroductionTests", "LrsIntroductionTests\LrsIntroductionTests.csproj", "{A502482D-62A2-4DEA-A276-509C521370F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,9 +29,18 @@ Global
 		{7C45F035-D359-4760-93FA-E2E9145FC903}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7C45F035-D359-4760-93FA-E2E9145FC903}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7C45F035-D359-4760-93FA-E2E9145FC903}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A502482D-62A2-4DEA-A276-509C521370F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A502482D-62A2-4DEA-A276-509C521370F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A502482D-62A2-4DEA-A276-509C521370F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A502482D-62A2-4DEA-A276-509C521370F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{985B0B04-11AD-424B-AAC0-89095217B90F} = {35D12641-CEB6-4F0C-BF37-A044B9510770}
+		{7C45F035-D359-4760-93FA-E2E9145FC903} = {B5BE7B9B-8C6A-469B-B812-7EE86F80614B}
+		{A502482D-62A2-4DEA-A276-509C521370F6} = {96FA3795-8E02-41E0-947A-6C61C05245D9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37EB9B3D-5764-45AA-9CE9-96375797F552}

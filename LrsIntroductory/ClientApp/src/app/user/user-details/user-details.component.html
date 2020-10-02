@@ -7,12 +7,25 @@
   <h5>Email: {{user.emailAddress}}</h5>
   <h5>Is Active: <input type="checkbox" disabled [checked]="user.isActive"></h5>
 </div>
-<button class="btn btn-primary" (click)="goToEditPage()">Edit</button>
 <button 
+  *ngIf="user"
+  class="btn btn-primary" 
+  (click)="goToEditPage()"
+  >
+    Edit
+  </button>
+<button 
+ *ngIf="user"
   mat-button 
   class="btn btn-light" 
   [disabled]="!user.isActive" 
   (click)="openDeleteDialog()"
-  >Delete</button>
+  >
+  Delete
+</button>
 
-<button class="btn btn-light" (click)="goBack()">Back</button>
+<button 
+  class="btn btn-light"
+  (click)="goBack()">
+    Back
+</button>

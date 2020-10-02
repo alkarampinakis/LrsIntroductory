@@ -75,7 +75,6 @@ namespace LrsIntroducotryApi.Controllers
         /// Inserts a new user.
         /// </summary>
         /// <param name="user">The new user.</param>
-        /// <returns>A <see cref="UserWithTypeTitleDTO"/></returns>
         [HttpPost]
         public async Task<IActionResult> InsertUser(UserWithTypeTitleDTO user)
         {
@@ -103,7 +102,6 @@ namespace LrsIntroducotryApi.Controllers
         /// Updates a user.
         /// </summary>
         /// <param name="user">The update user data.</param>
-        /// <returns>A <see cref="UserWithTypeTitleDTO"/></returns>
         [HttpPut]
         public async Task<IActionResult> UpdateUser(UserWithTypeTitleDTO user)
         {
