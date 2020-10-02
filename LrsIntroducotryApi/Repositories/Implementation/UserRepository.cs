@@ -10,6 +10,9 @@ namespace LrsIntroducotryApi.Repositories.Implementation
 {
     public class UserRepository : IUserRepository
     {
+        /// <summary>
+        /// The db context
+        /// </summary>
         private readonly LrsIntroductoryDBContext _context;
 
         public UserRepository(LrsIntroductoryDBContext context)

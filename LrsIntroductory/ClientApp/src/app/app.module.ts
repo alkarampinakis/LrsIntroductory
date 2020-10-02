@@ -1,3 +1,4 @@
+import { ErrorPageComponent } from './error-pages/error-page.component';
 import { UserUpdateComponent } from './user/user-update/user-update.component';
 import { UserInsertComponent } from './user/user-insert/user-insert.component';
 import { UserDetailsComponent } from './user/user-details/user-details.component';
@@ -15,6 +16,8 @@ import { DatePipe } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UserDeleteModalComponent } from './user/user-delete/user-delete-modal.component';
 import { MapComponent } from './map/map.component';
+import { ErrorPageNotFoundComponent } from './error-pages/error-page-not-found.component';
+import { HttpErrorInterceptor } from './http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { MapComponent } from './map/map.component';
     UserInsertComponent,
     UserUpdateComponent,
     UserDeleteModalComponent,
-    MapComponent
+    MapComponent,
+    ErrorPageComponent,
+    ErrorPageNotFoundComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,12 +43,22 @@ import { MapComponent } from './map/map.component';
       { path: 'user-insert', component: UserInsertComponent },
       { path: 'user-update/:id', component: UserUpdateComponent },
       { path: 'map', component: MapComponent },
-     // { path: '**', component: PageNotFoundComponent }
+      { path: 'error', component: ErrorPageComponent ,data:{error: "yo"}},
+      { path: '**', component: ErrorPageNotFoundComponent }
     ]),
     BrowserAnimationsModule,
     MatDialogModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,
+    {
+
+      provide: HTTP_INTERCEPTORS,
+ 
+      useClass: HttpErrorInterceptor,
+ 
+      multi: true
+ 
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

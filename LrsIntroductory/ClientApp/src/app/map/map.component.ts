@@ -47,7 +47,6 @@ export class MapComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     if (this.view) {
-      // destroy the map view
       this.view.container = null;
     }
   }

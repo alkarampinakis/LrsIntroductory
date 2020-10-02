@@ -63,13 +63,7 @@ export class UserService{
         return this.http.post(
                 this.baseUrl + this.usersEndpoint, 
                 JSON.stringify(data),
-                this.httpOptions)
-            .pipe(
-                catchError((err) => {
-                    console.error(err);
-                    throw err;
-                })
-            );
+                this.httpOptions);
     }
 
     // Updates a user.
@@ -90,26 +84,13 @@ export class UserService{
         return this.http.put(
                 this.baseUrl + this.usersEndpoint, 
                 JSON.stringify(data),
-                this.httpOptions)
-            .pipe(
-                catchError((err) => {
-                    console.error(err);
-                    throw err;
-                })
-            );
+                this.httpOptions);
     }
 
     // Deletes a user by user identifier.
     deleteUser(userId : number) :Observable<any>{
 
         return this.http.delete(
-                this.baseUrl + this.usersEndpoint+"?userId="+userId)
-            .pipe(
-                catchError((err) => {
-                    console.error(err);
-                    throw err;
-                })
-            );
+                this.baseUrl + this.usersEndpoint+"?userId="+userId);
     }
-
 }

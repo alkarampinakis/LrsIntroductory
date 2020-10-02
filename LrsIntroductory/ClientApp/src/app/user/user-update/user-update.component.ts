@@ -73,6 +73,7 @@ export class UserUpdateComponent implements OnInit{
 
     updateUser(form : NgForm): void{
         if(form.valid){
+            //passing the date temp var back to user.birthdate and making the originalUser.birthdate the same format
             this.user.birthDate = this.date != "" ? new Date(this.datepipe.transform(new Date(this.date),'yyyy-MM-dd')) : null;
             this.originalUser.birthDate = new Date(this.datepipe.transform(this.originalUser.birthDate,'yyyy-MM-dd'));
   
