@@ -41,7 +41,7 @@ export class UserListComponent implements OnInit{
         next: users =>
         {
             this.users = users,
-            this.fitleredUsers = this.users
+            this.fitleredUsers = this._listFilter ? this.perfomFilter(this.listFilter) : this.users;
         },
         error: err => this.errorMessage = err
         });

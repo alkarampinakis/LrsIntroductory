@@ -16,31 +16,36 @@ export class UserService{
     private userEndpoint ='/user';
     private typesEndpoint ='/types';
     private titlesEndpoint ='/titles';
+    
     httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json; charset=utf-8'
         })
-      };
+    };
 
     constructor(private http:HttpClient){}
 
+    // Gets the list of users.
     getUsers(includeInactive:boolean): Observable<User[]>{
         return this.http.get<User[]>(this.baseUrl + this.usersEndpoint + "?includeInactive=" + includeInactive);
     }
 
+    // Gets a user by user identifier .
     getUser(userId : number): Observable<User>{
         return this.http.get<User>(this.baseUrl + this.userEndpoint + "?userId=" + userId);
     }
 
+    // Gets all user types.
     getUserTypes(): Observable<UserType[]>{
         return this.http.get<UserType[]>(this.baseUrl + this.typesEndpoint);
     }
    
+    // Gets all user titles.
     getUserTitles(): Observable<UserTitle[]>{
         return this.http.get<UserTitle[]>(this.baseUrl + this.titlesEndpoint);
     }
 
-
+    // Insert a new user.
     insertUser(user : User) :Observable<any>{
         var data = {
             "id": user.id,
@@ -67,6 +72,7 @@ export class UserService{
             );
     }
 
+    // Updates a user.
     updateUser(user : User) :Observable<any>{
         var data = {
             "id": user.id,
@@ -93,6 +99,7 @@ export class UserService{
             );
     }
 
+    // Deletes a user by user identifier.
     deleteUser(userId : number) :Observable<any>{
 
         return this.http.delete(
