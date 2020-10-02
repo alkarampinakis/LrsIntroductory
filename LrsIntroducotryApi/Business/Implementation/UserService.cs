@@ -70,6 +70,17 @@ namespace LrsIntroducotryApi.Business.Implementation
             await _userRepository.UpdateUserAsync(_mapper.Map<UserWithTypeTitle>(user)).ConfigureAwait(false);
         }
 
+        public async Task DeleteUser(int userId)
+        {
+            if (userId <= default(int))
+            {
+                throw new ArgumentException(
+                   "userId",
+                   "user identifier is required.");
+            }
+            await _userRepository.DeleteUser(userId).ConfigureAwait(false);
+        }
+
         #endregion
 
         #region Private methods

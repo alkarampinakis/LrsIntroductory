@@ -44,11 +44,11 @@ export class UserDetailsComponent{
         this.location.back();
     }
 
-    openDialog() {
-        const dialogRef = this.dialog.open(UserDeleteModalComponent);
-    
-        dialogRef.afterClosed().subscribe(result => {
-          console.log(`Dialog result: ${result}`);
-        });
-      }
+    openDeleteDialog() {
+       this.dialog.open(UserDeleteModalComponent,{
+           data: {
+               userId: this.user.id
+           }
+       });
+    }
 }

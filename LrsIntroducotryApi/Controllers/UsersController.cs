@@ -25,7 +25,7 @@ namespace LrsIntroducotryApi.Controllers
         /// <param name="includeInactive">Determines if the list should contain inactive records.</param>
         /// <returns>An <see cref="IEnumerable{UserWithTypeTitleDTO]"/></returns>
         [HttpGet]
-        public async Task<IEnumerable<UserWithTypeTitleDTO>> GetUsersAsync(bool includeInactive = false)
+        public async Task<IEnumerable<UserWithTypeTitleDTO>> GetUsers(bool includeInactive = false)
         {
             return await _userService.GetUsersAsync(includeInactive).ConfigureAwait(false);
         }
@@ -37,7 +37,7 @@ namespace LrsIntroducotryApi.Controllers
         /// <returns>A <see cref="UserWithTypeTitleDTO"/></returns>
         [Route("/User")]
         [HttpGet]
-        public async Task<UserWithTypeTitleDTO> GetUserByIdAsync(int userId)
+        public async Task<UserWithTypeTitleDTO> GetUserById(int userId)
         {
             try
             {
@@ -55,7 +55,7 @@ namespace LrsIntroducotryApi.Controllers
         /// <returns>An <see cref="IEnumerable{UserTypeDTO]"/></returns>
         [Route("/Types")]
         [HttpGet]
-        public async Task<IEnumerable<UserTypeDTO>> GetUserTypesAsync()
+        public async Task<IEnumerable<UserTypeDTO>> GetUserTypes()
         {
             return await _userService.GetUserTypesAsync().ConfigureAwait(false);
         }
@@ -66,7 +66,7 @@ namespace LrsIntroducotryApi.Controllers
         /// <returns>An <see cref="IEnumerable{UserTitleDTO]"/></returns>
         [Route("/Titles")]
         [HttpGet]
-        public async Task<IEnumerable<UserTitleDTO>> GetUserTitlesAsync()
+        public async Task<IEnumerable<UserTitleDTO>> GetUserTitles()
         {
             return await _userService.GetUserTitlesAsync().ConfigureAwait(false);
         }
@@ -77,7 +77,7 @@ namespace LrsIntroducotryApi.Controllers
         /// <param name="user">The new user.</param>
         /// <returns>A <see cref="UserWithTypeTitleDTO"/></returns>
         [HttpPost]
-        public async Task<IActionResult> InsertUserAsync(UserWithTypeTitleDTO user)
+        public async Task<IActionResult> InsertUser(UserWithTypeTitleDTO user)
         {
             try
             {
@@ -105,7 +105,7 @@ namespace LrsIntroducotryApi.Controllers
         /// <param name="user">The update user data.</param>
         /// <returns>A <see cref="UserWithTypeTitleDTO"/></returns>
         [HttpPut]
-        public async Task<IActionResult> UpdateUserAsync(UserWithTypeTitleDTO user)
+        public async Task<IActionResult> UpdateUser(UserWithTypeTitleDTO user)
         {
             try
             {
@@ -115,6 +115,28 @@ namespace LrsIntroducotryApi.Controllers
                 }
 
                 await _userService.UpdateUserAsync(user).ConfigureAwait(false);
+                return Ok();
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            };
+        }
+
+        /// <summary>
+        /// Deletes a user.
+        /// </summary>
+        /// <param name="userId">The user identifier</param>
+        [HttpDelete]
+        public async Task<IActionResult> DeleteUser(int userId)
+        {
+            try
+            {
+                await _userService.DeleteUser(userId).ConfigureAwait(false);
                 return Ok();
             }
             catch (ArgumentException ex)

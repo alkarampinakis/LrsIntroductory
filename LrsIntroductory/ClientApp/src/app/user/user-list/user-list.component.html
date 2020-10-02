@@ -2,7 +2,7 @@
 <div class="card-body" *ngIf="fitleredUsers">
   <div class="row">
     <div class="col-md-2">
-      Filter By FullName:
+      Filter By Fullname:
     </div>
     <div class="col-md-4">
       <input type="text"
@@ -18,7 +18,7 @@
         </div>
     </div>
   </div>
-  <div class="table-responsive" style="height:500px;overflow:auto;">
+  <div class="table-responsive" style="max-height: 500px; overflow:auto;">
     <table class="table" *ngIf='users && users.length'>
       <thead>
         <tr>
@@ -44,6 +44,9 @@
                 </a> &nbsp;
                 <a [routerLink]="['/user-update',user.id]">  
                     <i class="fas fa-edit"></i>
+                </a>&nbsp;
+                <a *ngIf="user.isActive" (click)="openDeleteDialog(user.id)">  
+                  <i class="fas fa-trash-alt"></i>
                 </a>
             </td>
         </tr>

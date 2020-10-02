@@ -134,5 +134,30 @@ namespace LrsIntroducotryApi.Repositories.Implementation
             _ = _context.Update(oldUser);
             _ = await _context.SaveChangesAsync().ConfigureAwait(false);
         }
+
+        public async Task DeleteUser(int userId)
+        {
+            if (userId <= default(int))
+            {
+                throw new ArgumentNullException(nameof(userId));
+            }
+
+            var user = await _context.User
+                               .SingleOrDefaultAsync(x => x.Id == userId &&
+                                                          x.IsActive.HasValue &&
+                                                          x.IsActive.Value)
+                               .ConfigureAwait(false);
+
+            if (user == null)
+            {
+                throw new KeyNotFoundException();
+            }
+
+            user.IsActive = false;
+
+            _ = _context.Update(user);
+            _ = await _context.SaveChangesAsync().ConfigureAwait(false);
+        }
+
     }
 }

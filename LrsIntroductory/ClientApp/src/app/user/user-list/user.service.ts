@@ -93,4 +93,16 @@ export class UserService{
             );
     }
 
+    deleteUser(userId : number) :Observable<any>{
+
+        return this.http.delete(
+                this.baseUrl + this.usersEndpoint+"?userId="+userId)
+            .pipe(
+                catchError((err) => {
+                    console.error(err);
+                    throw err;
+                })
+            );
+    }
+
 }

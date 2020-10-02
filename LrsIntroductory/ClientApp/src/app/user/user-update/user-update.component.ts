@@ -44,8 +44,8 @@ export class UserUpdateComponent implements OnInit{
                 this.originalUser = user
                 this.user = {... this.originalUser }
                 // couldnt load date on date input cause in its format it had
-                // time too, so i made an extra var that takes only the date string
-                // and link this to the input.
+                // time too and couldnt put it in date input, so i made an extra var that takes 
+                // only the date string and link this to the input. Then on updateUser i put it at user.birthDate
                 this.date= (this.user.birthDate != null) ?
                                      this.user.birthDate.toString().split('T')[0]
                                      : null;
@@ -74,7 +74,7 @@ export class UserUpdateComponent implements OnInit{
 
     updateUser(form : NgForm): void{
         if(form.valid){
-            this.user.birthDate = new Date(this.datepipe.transform(((this.date != null) ? new Date(this.date) : null),'yyyy-MM-dd'));
+            this.user.birthDate = this.date != "" ? new Date(this.datepipe.transform(new Date(this.date),'yyyy-MM-dd')) : null;
             this.originalUser.birthDate = new Date(this.datepipe.transform(this.originalUser.birthDate,'yyyy-MM-dd'));
   
             if(_.isEqual( this.user,  this.originalUser)){

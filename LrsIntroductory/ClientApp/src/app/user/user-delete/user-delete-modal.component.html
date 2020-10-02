@@ -1,8 +1,12 @@
-<h3>Delete</h3>
-<h2>Are you sure you want to delete this user??</h2>
-<div
-    style="float: right;"
->
-    <button class="btn btn-primary">YES!</button>
-    <button class="btn btn-light">No</button>
+<div class="modal-header">
+    <h3>Delete</h3>
+</div>
+<div class="modal-body">  
+    <h5>Are you sure you want to delete this user??</h5>
+</div>
+<div class="modal-footer">
+    <div style="float: right;">
+        <button class="btn btn-primary"  mat-dialog-close (click)="deleteUser(data.userId)" mat-button cdkFocusInitial>Yes</button>
+        <button class="btn btn-light" mat-button mat-dialog-close>No</button>
+    </div>
 </div>

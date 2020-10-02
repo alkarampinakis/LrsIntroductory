@@ -45,5 +45,11 @@ namespace LrsIntroducotryApi.Repositories
         /// </summary>
         /// <param name="user">The new user data.</param>
         public Task UpdateUserAsync(UserWithTypeTitle user);
+
+        /// <summary>
+        /// Deletes a user.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        public Task DeleteUser(int userId);
     }
 }

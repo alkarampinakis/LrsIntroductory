@@ -44,5 +44,10 @@ namespace LrsIntroducotryApi.Business
         /// <param name="user">The user data.</param>
         public Task UpdateUserAsync(UserWithTypeTitleDTO user);
 
+        /// <summary>
+        /// Deletes a user.
+        /// </summary>
+        /// <param name="userId">The user identifier.</param>
+        public Task DeleteUser(int userId);
     }
 }
