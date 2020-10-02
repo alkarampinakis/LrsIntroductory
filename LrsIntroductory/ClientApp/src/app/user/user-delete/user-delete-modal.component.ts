@@ -1,4 +1,4 @@
-import { UserService } from './../user-list/user.service';
+import { UserService } from '../user.service';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Component, Inject, Input } from "@angular/core";
 import { Router } from '@angular/router';
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
     templateUrl: './user-delete-modal.component.html'
   })
   export class UserDeleteModalComponent {
-    constructor(@Inject(MAT_DIALOG_DATA) public data: number,
+    constructor(@Inject(MAT_DIALOG_DATA) public data,
                 private userService: UserService,
                 private router : Router ){}
 

@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { UserDeleteModalComponent } from './user/user-delete/user-delete-modal.component';
+import { MapComponent } from './map/map.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { UserDeleteModalComponent } from './user/user-delete/user-delete-modal.c
     UserDetailsComponent,
     UserInsertComponent,
     UserUpdateComponent,
-    UserDeleteModalComponent
+    UserDeleteModalComponent,
+    MapComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -35,6 +37,7 @@ import { UserDeleteModalComponent } from './user/user-delete/user-delete-modal.c
       { path: 'user/:id', component: UserDetailsComponent },
       { path: 'user-insert', component: UserInsertComponent },
       { path: 'user-update/:id', component: UserUpdateComponent },
+      { path: 'map', component: MapComponent },
      // { path: '**', component: PageNotFoundComponent }
     ]),
     BrowserAnimationsModule,

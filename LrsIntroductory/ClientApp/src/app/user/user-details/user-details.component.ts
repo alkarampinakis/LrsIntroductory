@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { User } from '../../models/User';
 import { Component } from "@angular/core";
 import { ActivatedRoute, Router } from '@angular/router';
-import { UserService } from '../user-list/user.service';
+import { UserService } from '../user.service';
 import { Location } from '@angular/common';
 
 @Component({

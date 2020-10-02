@@ -1,4 +1,3 @@
-<h2>{{title | uppercase}}</h2>
 <div class="card-body" *ngIf="fitleredUsers">
   <div class="row">
     <div class="col-md-2">
@@ -33,7 +32,6 @@
       <tbody>
         <tr *ngFor="let user of fitleredUsers">
             <td>{{ user.surname | titlecase }} {{ user.name | titlecase }}</td>
-            <!-- <td> <a [routerLink]="['/product',product.id]"> {{product.name | uppercase}}</a></td> -->
             <td>{{ user.birthDate | date: 'dd/MM/yyyy'}}</td>
             <td>{{ user.userType | titlecase }}</td>
             <td>{{ user.userTitle | titlecase }}</td>

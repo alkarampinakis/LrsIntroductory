@@ -1,6 +1,6 @@
 import { User } from '../../models/User';
 import { Component, OnInit } from "@angular/core";
-import { UserService } from './user.service';
+import { UserService } from '../user.service';
 import { UserDeleteModalComponent } from '../user-delete/user-delete-modal.component';
 import { MatDialog } from '@angular/material/dialog';
 

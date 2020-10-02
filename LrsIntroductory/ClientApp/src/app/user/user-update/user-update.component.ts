@@ -1,13 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
-import { UserService } from "../user-list/user.service";
+import { UserService } from "../user.service";
 import {  Location } from '@angular/common';
 import { User } from "src/app/models/User";
 import { UserTitle } from "src/app/models/UserTitle";
 import { UserType } from "src/app/models/UserType";
 import { NgForm } from "@angular/forms";
 import { DatePipe } from '@angular/common';
-import { equal } from "assert";
 import * as _ from 'lodash';
 
 @Component({

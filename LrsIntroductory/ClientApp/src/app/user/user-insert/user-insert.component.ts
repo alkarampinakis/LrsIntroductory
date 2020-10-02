@@ -3,7 +3,7 @@ import { UserType } from '../../models/UserType';
 import { UserTitle } from '../../models/UserTitle';
 import { User } from '../../models/User';
 import { Component, OnInit } from "@angular/core";
-import { UserService } from '../user-list/user.service';
+import { UserService } from '../user.service';
 import { Location } from '@angular/common';
 import { NgForm } from '@angular/forms';
 

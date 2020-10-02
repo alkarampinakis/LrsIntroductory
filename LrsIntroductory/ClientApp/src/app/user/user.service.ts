@@ -1,7 +1,7 @@
 import { catchError, retry } from 'rxjs/operators';
-import { UserTitle } from '../../models/UserTitle';
-import { UserType } from '../../models/UserType';
-import { User } from '../../models/User';
+import { UserTitle } from '../models/UserTitle';
+import { UserType } from '../models/UserType';
+import { User } from '../models/User';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { Injectable } from '@angular/core';
